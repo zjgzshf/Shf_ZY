@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.niit.com.mapper.IInfo">
+	<select id="queryInfos" resultType="org.niit.com.bean.UserInfo">
+		select * from `userinfo`
+    </select>
+    
+    <select id="queryInfo" parameterType="int" resultType="org.niit.com.bean.UserInfo">
+		select * from `userinfo` where userid = #{userid}
+    </select>
+    
+    
+    <insert id="insertInfo">
+	  insert into userinfo (loginname,password,introduction)
+	  values (#{loginname},#{password},#{introduction})
+	</insert>
+	
+	<update id="updateInfo">
+	  update userinfo set
+	    loginname = #{loginname},
+	    password = #{password},
+	    introduction = #{introduction} 
+	  where userid = #{userid}
+	</update>
+
+	<delete id="deleteInfo">
+	  delete from userinfo where userid = #{userid}
+	</delete>
+	
+	<select id="login" resultType="org.niit.com.bean.UserInfo">
+		select * from `userinfo` where loginname = #{loginname} and password = #{password}
+    </select>
+    
+    <insert id="register">
+	  insert into userinfo (loginname,password,introduction)
+	  values (#{loginname},#{password},#{introduction})
+	</insert>
+	
+</mapper>
